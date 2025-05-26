@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -15,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login to your account'),
+        title: const Text('Register your account'),
         centerTitle: true,
       ),
       body: Padding(
@@ -30,6 +31,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Icon(Icons.person, size: 100, color: Colors.black),
               ),
               const SizedBox(height: 48),
+              TextFormField(
+                controller: _nameController,
+                cursorColor: Color(0xff9ea8db),
+                decoration: const InputDecoration(
+                  label: Text('Name'),
+                  border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xff9ea8db)),
+                  ),
+                  floatingLabelStyle: TextStyle(color: Color(0xff9ea8db)),
+                  prefixIcon: Icon(Icons.person),
+                  hintText: 'Enter your name',
+                ),
+              ),
+              const SizedBox(height: 20),
               TextFormField(
                 controller: _emailController,
                 cursorColor: Color(0xff9ea8db),
@@ -67,20 +83,20 @@ class _LoginScreenState extends State<LoginScreen> {
                   backgroundColor: Color(0xff9ea8db),
                 ),
                 child: const Text(
-                  'Login',
+                  'Register',
                   style: TextStyle(color: Colors.black),
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('New user?'),
+                  const Text('Already have an account?'),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/register');
+                      Navigator.pushNamed(context, '/login');
                     },
                     child: const Text(
-                      'Sign up here!',
+                      'Sign in here!',
                       style: TextStyle(
                         color: Color(0xff9ea8db),
                         fontWeight: FontWeight.bold,
