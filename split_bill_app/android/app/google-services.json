@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1049876705882",
+    "project_id": "fp-ppb-c6",
+    "storage_bucket": "fp-ppb-c6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1049876705882:android:bb17d2ddb070ece7965e63",
+        "android_client_info": {
+          "package_name": "com.example.split_bill_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJmVjVwbb-J2Pw933780n6y3EZAb-14Uo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
