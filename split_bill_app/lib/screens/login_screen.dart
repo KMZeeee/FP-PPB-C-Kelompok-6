@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -10,6 +11,19 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  void login() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+
+    Navigator.pushReplacementNamed(context, '/home');
+
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('Login successful!')));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +78,11 @@ class _LoginScreenState extends State<LoginScreen> {
               FilledButton(
                 onPressed: () {},
                 style: FilledButton.styleFrom(backgroundColor: Colors.black),
+              ElevatedButton(
+                onPressed: login,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xff9ea8db),
+                ),
                 child: const Text(
                   'Login',
                   style: TextStyle(color: Colors.white),
@@ -75,6 +94,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   const Text('New user?'),
                   TextButton(
                     onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, '/register');
+                    },
                     child: const Text(
                       'Sign up here!',
                       style: TextStyle(color: Colors.blue),
