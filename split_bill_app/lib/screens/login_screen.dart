@@ -75,9 +75,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 24),
-              FilledButton(
-                onPressed: () {},
-                style: FilledButton.styleFrom(backgroundColor: Colors.black),
               ElevatedButton(
                 onPressed: login,
                 style: ElevatedButton.styleFrom(
@@ -93,7 +90,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   const Text('New user?'),
                   TextButton(
-                    onPressed: () {},
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, '/register');
                     },
