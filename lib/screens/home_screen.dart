@@ -157,6 +157,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: const Text('Logout'),
                 onTap: logout,
               ),
+              ListTile(
+                leading: const Icon(Icons.group),
+                title: const Text('Add Bill'),
+                onTap: () {
+                  Navigator.pushNamed(context, '/ocr');
+                },
+              ),
             ],
           ),
         ),
