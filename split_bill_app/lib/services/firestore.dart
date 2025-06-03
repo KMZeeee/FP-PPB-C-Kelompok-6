@@ -1,67 +1,44 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirestoreService {
-  final CollectionReference event = FirebaseFirestore.instance.collection(
-    'events',
-  );
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  Future<void> addEvent({
-    required String Name,
-    required String Date,
-    required List<Map<String, dynamic>> member,
-    required int total_expense,
+  // menambah data user ke table person
+  Future<void> addPerson({
+    required String uid,
+    required String name,
+    required String email,
+    int balance = 0,
+    List<String> friends = const [],
   }) async {
-    try {
-      await event.add({
-        'Name': Name,
-        'Date': Date,
-        'member': member,
-        'total_expense': total_expense,
-      });
-    } catch (e) {
-      print('Error adding event: $e');
-      rethrow;
-    }
+    await _db.collection('person').doc(uid).set({
+      'uid': uid,
+      'name': name,
+      'email': email,
+      'balance': balance,
+      'friends': friends,
+    });
   }
 
-  Future<void> updateEvent({
-    required String eventId,
-    required String Name,
-    required String Date,
-    required String Time,
-    required String Location,
-  }) async {
-    try {
-      await event.doc(eventId).update({
-        'Name': Name,
-        'Date': Date,
-        'Time': Time,
-        'Location': Location,
-      });
-    } catch (e) {
-      print('Error updating event: $e');
-      rethrow;
+  // mengambil data user
+  Future<Map<String, dynamic>?> getPerson(String uid) async {
+    final doc = await _db.collection('person').doc(uid).get();
+    if (doc.exists) {
+      return doc.data() as Map<String, dynamic>;
     }
+    return null;
   }
 
-  Future<void> deleteEvent(String eventId) async {
-    try {
-      await event.doc(eventId).delete();
-    } catch (e) {
-      print('Error deleting event: $e');
-      rethrow;
-    }
-  }
+  // top up balance
+  Future<void> topUpBalance(String uid, int amount) async {
+    final doc = _db.collection('person').doc(uid);
 
-  Future<List<Map<String, dynamic>>> getEvents() async {
-    try {
-      QuerySnapshot snapshot = await event.get();
-      return snapshot.docs
-          .map((doc) => doc.data() as Map<String, dynamic>)
-          .toList();
-    } catch (e) {
-      print('Error fetching events: $e');
-      rethrow;
-    }
+    await _db.runTransaction((transaction) async {
+      final snapshot = await transaction.get(doc);
+      final currentBalance = snapshot.get('balance') as int;
+      final newBalance = currentBalance + amount;
+
+      transaction.update(doc, {'balance': newBalance});
+    });
   }
 }
