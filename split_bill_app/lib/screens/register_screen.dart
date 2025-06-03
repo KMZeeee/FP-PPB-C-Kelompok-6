@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:split_bill_app/services/firestore.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -11,6 +13,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+
+  final FirestoreService _firestoreService = FirestoreService();
+
+  void register() async {
+    UserCredential userCredential = await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+          email: _emailController.text,
+          password: _passwordController.text,
+        );
+
+    await _firestoreService.addPerson(
+      uid: userCredential.user!.uid,
+      name: _nameController.text,
+      email: _emailController.text,
+    );
+
+    Navigator.pushReplacementNamed(context, '/login');
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('your account has been created!')),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +103,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               const SizedBox(height: 24),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: register,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xff9ea8db),
                 ),
@@ -93,7 +118,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const Text('Already have an account?'),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/login');
+                      Navigator.pushReplacementNamed(context, '/login');
+
                     },
                     child: const Text(
                       'Sign in here!',
