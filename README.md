@@ -2,16 +2,16 @@
 
 ## UI Design
 
-![UI Design App](design-ui.png)
+![UI Design App](assets/design-ui.png)
 
 ## Use Case Diagram
 
-![Use case diagram](use-case-tagihin.drawio.png)
+![Use case diagram](assets/use-case-tagihin.drawio.png)
 
 ## Activity Diagram
 
-![Activity Diagram](activity-diagram.drawio.png)
+![Activity Diagram](assets/activity-diagram.drawio.png)
 
 ## Architecture Diagram
 
-![Architecture Diagram](architecture-diagram.jpg)
+![Architecture Diagram](assets/architecture-diagram.jpg)
