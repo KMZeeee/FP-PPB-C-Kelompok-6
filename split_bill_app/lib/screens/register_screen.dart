@@ -14,6 +14,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+
   final FirestoreService _firestoreService = FirestoreService();
 
   void register() async {
@@ -118,6 +119,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   TextButton(
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, '/login');
+
                     },
                     child: const Text(
                       'Sign in here!',

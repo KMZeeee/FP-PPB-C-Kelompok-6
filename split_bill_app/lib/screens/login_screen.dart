@@ -46,14 +46,14 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 48),
               TextFormField(
                 controller: _emailController,
-                cursorColor: Colors.blue,
+                cursorColor: Color(0xff9ea8db),
                 decoration: const InputDecoration(
                   label: Text('Email'),
                   border: OutlineInputBorder(),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
+                    borderSide: BorderSide(color: Color(0xff9ea8db)),
                   ),
-                  floatingLabelStyle: TextStyle(color: Colors.blue),
+                  floatingLabelStyle: TextStyle(color: Color(0xff9ea8db)),
                   prefixIcon: Icon(Icons.email),
                   hintText: 'Enter your email',
                 ),
@@ -61,28 +61,29 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 20),
               TextFormField(
                 controller: _passwordController,
-                cursorColor: Colors.blue,
+                cursorColor: Color(0xff9ea8db),
                 obscureText: true,
                 decoration: const InputDecoration(
                   label: Text('Password'),
                   border: OutlineInputBorder(),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
+                    borderSide: BorderSide(color: Color(0xff9ea8db)),
                   ),
-                  floatingLabelStyle: TextStyle(color: Colors.blue),
+                  floatingLabelStyle: TextStyle(color: Color(0xff9ea8db)),
                   prefixIcon: Icon(Icons.lock),
                   hintText: 'Enter your password',
                 ),
               ),
               const SizedBox(height: 24),
               ElevatedButton(
+
                 onPressed: login,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xff9ea8db),
                 ),
                 child: const Text(
                   'Login',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.black),
                 ),
               ),
               Row(
@@ -95,7 +96,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     child: const Text(
                       'Sign up here!',
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(
+                        color: Color(0xff9ea8db),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],

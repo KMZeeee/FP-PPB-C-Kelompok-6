@@ -41,6 +41,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
+
     apiKey: 'AIzaSyAqWjRmB9Etwbxd_yk1_RWMJO4oxz4Sjok',
     appId: '1:732168305309:web:138e97c45c3c15be5a7274',
     messagingSenderId: '732168305309',
@@ -63,6 +64,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '732168305309',
     projectId: 'fp-ppb-add06',
     storageBucket: 'fp-ppb-add06.firebasestorage.app',
+
     iosBundleId: 'com.example.splitBillApp',
   );
 
@@ -72,6 +74,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '732168305309',
     projectId: 'fp-ppb-add06',
     storageBucket: 'fp-ppb-add06.firebasestorage.app',
+
     iosBundleId: 'com.example.splitBillApp',
   );
 
@@ -84,3 +87,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'fp-ppb-add06.firebasestorage.app',
   );
 }
+
