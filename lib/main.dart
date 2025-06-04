@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:split_bill_app/screens/friend_screen.dart';
 import 'package:split_bill_app/screens/home_screen.dart';
+import 'package:split_bill_app/screens/inbox_screen.dart';
 import 'firebase_options.dart';
 import 'screens/ocr_screen.dart';
 import 'screens/login_screen.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomeScreen(),
         '/friend': (context) => const FriendScreen(),
         '/ocr': (_) => const OCRScreen(),
+        '/inbox': (context) => const InboxScreen(),
       },
     );
   }

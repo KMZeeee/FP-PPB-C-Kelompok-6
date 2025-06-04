@@ -153,6 +153,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
               ListTile(
+                leading: const Icon(Icons.group),
+                title: const Text('Inbox'),
+                onTap: () {
+                  Navigator.pushNamed(context, '/inbox');
+                },
+              ),
+              ListTile(
                 leading: const Icon(Icons.logout),
                 title: const Text('Logout'),
                 onTap: logout,
